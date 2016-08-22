@@ -1,3 +1,3 @@
-# Module Name
+# [mhgNewsExpert]
 
-The description goes here
+Ermöglicht das Hinterlegen von Meta-Angaben für Nachrichten.
