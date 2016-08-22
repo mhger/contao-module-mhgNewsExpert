@@ -1,3 +1,3 @@
-# Contao Modul [mhgNewsExpert]
+# [mhgNewsExpert]
 
 Ermöglicht das Hinterlegen von Meta-Angaben für Nachrichten.
