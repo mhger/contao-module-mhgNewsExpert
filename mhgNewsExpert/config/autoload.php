@@ -1,26 +1,23 @@
 <?php
 /**
- * mhg Contao 3 Extension
+ * Contao 3 Extension [mhgNewsExpert]
+ *
+ * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
  *
  * @package     mhgNewsExpert
  * @link        http://www.medienhaus-gersoene.de
- * @license     propitary
- * @copyright   Copyright (c) 2015 Medienhaus Gersöne UG
- * @author      Pierre Gersöne <mail@medienhaus-gersoene.de>
+ * @license     propitary licence
  */
+
 /**
- * Register the namespaces
+ * Add namespace
  */
-ClassLoader::addNamespaces( array
-    (
-    'mhg',
-) );
+ClassLoader::addNamespace('mhg');
+
 /**
  * Register the classes
  */
-ClassLoader::addClasses( array
-    (
-    // Modules
+ClassLoader::addClasses( array (
     'mhg\ModuleNewsList' => 'system/modules/mhgNewsExpert/modules/ModuleNewsList.php',
     'mhg\ModuleNewsReader' => 'system/modules/mhgNewsExpert/modules/ModuleNewsReader.php',
-) );
+));
