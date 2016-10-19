@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contao 3 Extension [mhgNewsExpert]
  *
@@ -8,7 +9,8 @@
  * @link        http://www.medienhaus-gersoene.de
  * @license     propitary licence
  */
-namespace mhg;
+
+namespace mhgNewsExpert;
 
 /**
  * Class ModuleNewsReader 
@@ -16,8 +18,9 @@ namespace mhg;
 class ModuleNewsReader extends \Contao\ModuleNewsReader {
 
     /**
-     * generate to module
+     * generate the module
      * Display a wildcard in the back end
+     * 
      * @return string
      */
     public function generate() {
@@ -69,6 +72,11 @@ class ModuleNewsReader extends \Contao\ModuleNewsReader {
         // overwrite the page title
         if (!empty($objArticle->meta_title)) {
             $objPage->pageTitle = strip_tags(strip_insert_tags($objArticle->meta_title));
+        }
+
+        // overwrite the page title
+        if (!empty($objArticle->meta_description)) {
+            $objPage->description = strip_tags(strip_insert_tags($objArticle->meta_description));
         }
 
         $objPage->title = strip_tags(strip_insert_tags($objArticle->headline));

@@ -12,12 +12,12 @@
 /**
  * Add namespace
  */
-ClassLoader::addNamespace('mhg');
+ClassLoader::addNamespace('mhgNewsExpert');
 
 /**
  * Register the classes
  */
 ClassLoader::addClasses( array (
-    'mhg\ModuleNewsList' => 'system/modules/mhgNewsExpert/modules/ModuleNewsList.php',
-    'mhg\ModuleNewsReader' => 'system/modules/mhgNewsExpert/modules/ModuleNewsReader.php',
+    'mhgNewsExpert\ModuleNewsList' => 'system/modules/mhgNewsExpert/modules/ModuleNewsList.php',
+    'mhgNewsExpert\ModuleNewsReader' => 'system/modules/mhgNewsExpert/modules/ModuleNewsReader.php',
 ));

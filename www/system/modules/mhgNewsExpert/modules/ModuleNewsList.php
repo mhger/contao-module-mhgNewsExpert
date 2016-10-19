@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contao 3 Extension [mhgNewsExpert]
  *
@@ -8,12 +9,13 @@
  * @link        http://www.medienhaus-gersoene.de
  * @license     propitary licence
  */
-namespace mhg;
+
+namespace mhgNewsExpert;
 
 /**
  * Class ModuleNewsList
  */
-class ModuleNewsList extends \Contao\ModuleNewsList {
+class ModuleNewsList extends \NewsCategories\ModuleNewsList {
 
     /**
      * Compile the module
