@@ -3,10 +3,10 @@
 /**
  * Contao 3 Extension [mhgNewsExpert]
  *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
+ * Copyright (c) 2017 Medienhaus Gersöne UG | Pierre Gersöne
  *
  * @package     mhgNewsExpert
- * @link        http://www.medienhaus-gersoene.de
+ * @link        https://www.medienhaus-gersoene.de
  * @license     propitary licence
  */
 

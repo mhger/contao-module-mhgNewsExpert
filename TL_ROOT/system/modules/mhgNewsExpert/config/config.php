@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contao 3 Extension [mhgNewsExpert]
  *
@@ -8,7 +9,8 @@
  * @link        http://www.medienhaus-gersoene.de
  * @license     propitary licence
  */
-if( !defined( 'TL_ROOT' ) ) die( 'You can not access this file directly!' );
+if (!defined('TL_ROOT'))
+    die('You can not access this file directly!');
 
 /**
  * no config given
