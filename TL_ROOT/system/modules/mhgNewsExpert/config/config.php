@@ -9,9 +9,6 @@
  * @link        https://www.medienhaus-gersoene.de Medienhaus Gersöne - Agentur für Neue Medien: Web, Design & Marketing
  * @license     LGPL-3.0+
  */
-if (!defined('TL_ROOT'))
-    die('You can not access this file directly!');
-
 /**
  * no config given so far
  * 
