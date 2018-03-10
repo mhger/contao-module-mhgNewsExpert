@@ -10,52 +10,33 @@
  * @license     LGPL-3.0+
  */
 /**
- * get active modules
+ * alter DCA pallettes and subpalettes
  */
-if (!in_array('news', Config::getInstance()->getActiveModules())) {
-    return;
-}
-
-/**
- * alternate pallettes
- */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'redirectEmpty';
-$GLOBALS['TL_DCA']['tl_module']['subpalettes']['redirectEmpty'] = 'jumpTo';
-
-/**
- * newsreader
- */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['newsreader'] = str_replace(
-        ';{template_legend', ';{redirects_legend},redirect404,redirectEmpty;{template_legend', $GLOBALS['TL_DCA']['tl_module']['palettes']['newsreader']
-);
-
-/**
- * newslist
- */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['newslist'] = str_replace(',skipFirst', ',skipFirst,newsSorting', $GLOBALS['TL_DCA']['tl_module']['palettes']['newslist']);
+mhg\Dca::alterPalette('tl_module', ';{template_legend', ';{redirects_legend},redirect404,redirectEmpty;{template_legend', 'newsreader');
+mhg\Dca::alterPalette('tl_module', ',skipFirst', ',skipFirst,newsSorting', 'newslist');
+mhg\Dca::addSubpalette('tl_module', 'redirectEmpty', 'jumpTo');
 
 /**
  * Add additional fields to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['fields']['redirect404'] = array
-    (
+mhg\Dca::addField('tl_module', 'redirect404', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['redirect404'],
     'exclude' => true,
     'filter' => true,
     'inputType' => 'checkbox',
     'sql' => "char(1) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_module']['fields']['redirectEmpty'] = array
-    (
+));
+
+mhg\Dca::addField('tl_module', 'redirectEmpty', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['redirectEmpty'],
     'exclude' => true,
     'filter' => true,
     'inputType' => 'checkbox',
     'eval' => array('submitOnChange' => true),
     'sql' => "char(1) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_module']['fields']['newsSorting'] = array
-    (
+));
+
+mhg\Dca::addField('tl_module', 'newsSorting', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['newsSorting'],
     'default' => 'dateDesc',
     'exclude' => true,
@@ -64,4 +45,4 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['newsSorting'] = array
     'reference' => &$GLOBALS['TL_LANG']['tl_module']['newsSortingOptions'],
     'eval' => array('tl_class' => 'w50'),
     'sql' => "varchar(32) NOT NULL default ''"
-);
+));

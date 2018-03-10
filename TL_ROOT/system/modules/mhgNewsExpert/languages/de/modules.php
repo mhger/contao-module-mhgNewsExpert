@@ -9,5 +9,4 @@
  * @link        https://www.medienhaus-gersoene.de Medienhaus Gersöne - Agentur für Neue Medien: Web, Design & Marketing
  * @license     LGPL-3.0+
  */
-$GLOBALS['TL_LANG']['MOD']['mhgNewsExpert'] = array('Medienhaus Gersöne - MHG News Expert', 'Ermöglich das hinterlegen von Meta-Angaben für Nachrichten');
-
+$GLOBALS['TL_LANG']['MOD']['mhgNewsExpert'] = 'MHG News Expert - (c) Medienhaus Gersöne';
