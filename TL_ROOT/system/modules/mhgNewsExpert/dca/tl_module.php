@@ -19,15 +19,6 @@ mhg\Dca::addSubpalette('tl_module', 'redirectEmpty', 'jumpTo');
 /**
  * Add additional fields to tl_module
  */
-mhg\Dca::addField('tl_module', 'redirect404', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['redirect404'],
-    'exclude' => true,
-    'filter' => true,
-    'inputType' => 'checkbox',
-    'eval' => array('tl_class' => 'w50'),
-    'sql' => "char(1) NOT NULL default ''"
-));
-
 mhg\Dca::addField('tl_module', 'redirectEmpty', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['redirectEmpty'],
     'exclude' => true,
