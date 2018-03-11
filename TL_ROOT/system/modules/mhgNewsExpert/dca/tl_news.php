@@ -12,7 +12,7 @@
 /**
  * alter DCA palettes
  */
-mhg\Dca::alterPalettes('tl_news', 'author;', 'author;{legend_meta},meta_title,meta_description,meta_keywords;');
+mhg\Dca::alterPalettes('tl_news', 'author;', 'author;{meta_legend},title,description,keywords;');
 mhg\Dca::alterPalettes('tl_news', ',featured', '');
 mhg\Dca::alterPalettes('tl_news', ',published', ',published,featured');
 
@@ -24,8 +24,8 @@ mhg\Dca::alterFieldEval('tl_news', 'published', 'tl_class', 'w50');
 /**
  * add DCA fields
  */
-mhg\Dca::addField('tl_news', 'meta_title', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_news']['meta_title'],
+mhg\Dca::addField('tl_news', 'title', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_news']['title'],
     'exclude' => true,
     'search' => true,
     'inputType' => 'text',
@@ -33,8 +33,8 @@ mhg\Dca::addField('tl_news', 'meta_title', array(
     'sql' => "varchar(255) NOT NULL default ''"
 ));
 
-mhg\Dca::addField('tl_news', 'meta_description', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_news']['meta_description'],
+mhg\Dca::addField('tl_news', 'description', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_news']['description'],
     'exclude' => true,
     'search' => true,
     'inputType' => 'textarea',
@@ -42,8 +42,8 @@ mhg\Dca::addField('tl_news', 'meta_description', array(
     'sql' => "text NULL"
 ));
 
-mhg\Dca::addField('tl_news', 'meta_keywords', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_news']['meta_keywords'],
+mhg\Dca::addField('tl_news', 'keywords', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_news']['keywords'],
     'exclude' => true,
     'search' => true,
     'inputType' => 'text',
