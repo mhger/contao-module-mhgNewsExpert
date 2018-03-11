@@ -60,14 +60,12 @@ class NewsExpert {
             return;
         }
 
-        $objArticle = (object) $arrRow;
-
-        // store our data temporarly
+        // buffer the data temporarly
         static::$arrNewsReader[$objModule->id] = array(
-            'headline' => $objArticle->headline,
-            'title' => $objArticle->title,
-            'description' => $objArticle->description,
-            'keywords' => $objArticle->keywords
+            'headline' => $arrRow['headline'],
+            'title' => $arrRow['title'],
+            'description' => $arrRow['description'],
+            'keywords' => $arrRow['keywords']
         );
     }
 
