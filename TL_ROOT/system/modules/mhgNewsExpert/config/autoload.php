@@ -13,7 +13,7 @@
  * Register the classes
  */
 ClassLoader::addClasses(array(
-    // 
-    'mhg\ModuleNewsList' => 'system/modules/mhgNewsExpert/modules/ModuleNewsList.php',
+    // Classes
+    'mhg\NewsExpert' => 'system/modules/mhgNewsExpert/classes/NewsExpert.php',
     'mhg\ModuleNewsReader' => 'system/modules/mhgNewsExpert/modules/ModuleNewsReader.php',
 ));

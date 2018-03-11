@@ -41,7 +41,7 @@ mhg\Dca::addField('tl_module', 'newsSorting', array(
     'default' => 'dateDesc',
     'exclude' => true,
     'inputType' => 'select',
-    'options' => array('dateDesc', 'dateAsc', 'headlineAsc', 'headlineDesc', 'random'),
+    'options' => array_keys($GLOBALS['TL_MHG']['newsSorting']),
     'reference' => &$GLOBALS['TL_LANG']['tl_module']['newsSortingOptions'],
     'eval' => array('tl_class' => 'w50'),
     'sql' => "varchar(32) NOT NULL default ''"

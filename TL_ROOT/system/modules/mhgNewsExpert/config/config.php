@@ -10,7 +10,18 @@
  * @license     LGPL-3.0+
  */
 /**
- * no config given so far
- * 
- * we could put our sorting options here
+ * Hooks
  */
+$GLOBALS['TL_HOOKS']['newsListFetchItems'][] = array('mhg\NewsExpert', 'newsListFetchItems');
+
+
+/**
+ * Sorting options for product listings
+ */
+$GLOBALS['TL_MHG']['newsSorting'] = array(
+    'dateDesc' => 'tl_news.date DESC, tl_news.time DESC',
+    'dateAsc' => 'tl_news.date ASC, tl_news.time ASC',
+    'headlineAsc' => 'tl_news.headline ASC',
+    'headlineDesc' => 'tl_news.headline DESC',
+    'random' => 'RAND()'
+);
