@@ -17,11 +17,6 @@ $GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\NewsExpert', 'getConten
 $GLOBALS['TL_HOOKS']['newsListFetchItems'][] = array('mhg\NewsExpert', 'newsListFetchItems');
 $GLOBALS['TL_HOOKS']['parseArticles'][] = array('mhg\NewsExpert', 'parseArticles');
 
-
-
-
-
-
 /**
  * Sorting options for product listings
  */

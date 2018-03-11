@@ -18,6 +18,8 @@ namespace mhg;
  */
 class NewsExpert {
 
+    protected static $arrNewsReader = array();
+
     /**
      * 
      * @param   array $arrArchives
@@ -61,7 +63,7 @@ class NewsExpert {
         $objArticle = (object) $arrRow;
 
         // store our data temporarly
-        $GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objModule->id] = array(
+        static::$arrNewsReader[$objModule->id] = array(
             'headline' => $objArticle->headline,
             'title' => $objArticle->title,
             'description' => $objArticle->description,
@@ -91,7 +93,7 @@ class NewsExpert {
      */
     public static function getContentElement($objElement, $strBuffer) {
         if ($objElement->type === 'module') {
-            if (isset($GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objElement->module]) || empty($strBuffer)) {
+            if (isset(static::$arrNewsReader[$objElement->module]) || empty($strBuffer)) {
                 $objModul = \ModuleModel::findByPk($objElement->module);
                 if ($objModul !== null && $objModul->type === 'newsreader') {
                     return self::generateNewsReader($objModul, $strBuffer);
@@ -116,14 +118,14 @@ class NewsExpert {
             }
         }
 
-        if (!isset($GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objModule->id])) {
+        if (!isset(static::$arrNewsReader[$objModule->id])) {
             return $strBuffer;
         }
 
         // add/overwrite meta data
         global $objPage;
 
-        $objArticle = (object) $GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objModule->id];
+        $objArticle = (object) static::$arrNewsReader[$objModule->id];
 
         // overwrite the page title
         if (!empty($objArticle->title)) {
