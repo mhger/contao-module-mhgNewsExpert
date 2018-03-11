@@ -28,6 +28,8 @@ class NewsExpert {
      * @return  object  Instance of \Model\Collection
      */
     public function newsListFetchItems($arrArchives, $blnFeatured, $limit, $offset, $objModule) {
+        $limit = $limit > 0 ? $limit : 0;
+
         // sort news
         if (isset($GLOBALS['TL_MHG']['newsSorting'][$objModule->newsSorting])) {
             $arrOptions = array('order' => $GLOBALS['TL_MHG']['newsSorting'][$objModule->newsSorting]);
@@ -37,12 +39,8 @@ class NewsExpert {
             $arrOptions = array('order' => array_shift($arrTemp));
         }
 
-        // Get the items
-        if (isset($limit)) {
-            $objModel = \NewsModel::findPublishedByPids($arrArchives, $blnFeatured, $limit, $offset, $arrOptions);
-        } else {
-            $objModel = \NewsModel::findPublishedByPids($arrArchives, $blnFeatured, 0, $offset, $arrOptions);
-        }
+        // get the news model
+        $objModel = \NewsModel::findPublishedByPids($arrArchives, $blnFeatured, $limit, $offset, $arrOptions);
 
         return $objModel;
     }
