@@ -27,7 +27,7 @@ class NewsExpert {
      * @param   type $objModule Instance of \ModuleNewsList
      * @return  object  Instance of \Model\Collection
      */
-    public function newsListFetchItems($arrArchives, $blnFeatured, $limit, $offset, $objModule) {
+    public static function newsListFetchItems($arrArchives, $blnFeatured, $limit, $offset, $objModule) {
         $limit = $limit > 0 ? $limit : 0;
 
         // sort news
@@ -43,5 +43,107 @@ class NewsExpert {
         $objModel = \NewsModel::findPublishedByPids($arrArchives, $blnFeatured, $limit, $offset, $arrOptions);
 
         return $objModel;
+    }
+
+    /**
+     * Hook. Called on parsing news articles for list, reader etc.
+     * 
+     * @param   object $objTemplate
+     * @param   array $arrRow
+     * @param   object $objModule
+     * @return  void
+     */
+    public static function parseArticles($objTemplate, $arrRow, $objModule) {
+        if ($objModule->type !== 'newsreader') {
+            return;
+        }
+
+        $objArticle = (object) $arrRow;
+
+        // store our data temporarly
+        $GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objModule->id] = array(
+            'headline' => $objArticle->headline,
+            'title' => $objArticle->title,
+            'description' => $objArticle->description,
+            'keywords' => $objArticle->keywords
+        );
+    }
+
+    /**
+     * 
+     * @param   object $objModule
+     * @param   string $strBuffer
+     * @return  string
+     */
+    public static function getFrontendModule($objModule, $strBuffer) {
+        if ($objModule->type === 'newsreader') {
+            return self::generateNewsReader($objModule, $strBuffer);
+        }
+
+        return $strBuffer;
+    }
+
+    /**
+     * 
+     * @param   object $objElement
+     * @param   string $strBuffer
+     * @return  string
+     */
+    public static function getContentElement($objElement, $strBuffer) {
+        if ($objElement->type === 'module') {
+            if (isset($GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objElement->module]) || empty($strBuffer)) {
+                $objModul = \ModuleModel::findByPk($objElement->module);
+                if ($objModul !== null && $objModul->type === 'newsreader') {
+                    return self::generateNewsReader($objModul, $strBuffer);
+                }
+            }
+        }
+
+        return $strBuffer;
+    }
+
+    /**
+     * 
+     * @param   object $objModule The module model.
+     * @param   string $strBuffer
+     * @return  string
+     */
+    protected static function generateNewsReader($objModule, $strBuffer) {
+        // redirect empty        
+        if (empty($strBuffer) && $objModule->redirectEmpty && $objModule->jumpTo) {
+            if (null !== ($objTarget = $objModule->getRelated('jumpTo'))) {
+                \Controller::redirect(\Controller::generateFrontendUrl($objTarget->row()));
+            }
+        }
+
+        if (!isset($GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objModule->id])) {
+            return $strBuffer;
+        }
+
+        // add/overwrite meta data
+        global $objPage;
+
+        $objArticle = (object) $GLOBALS['TL_MHG']['CURRENT']['newsreader'][$objModule->id];
+
+        // overwrite the page title
+        if (!empty($objArticle->title)) {
+            // @see \Frontend::prepareMetaDescription
+            $objPage->pageTitle = strip_tags(strip_insert_tags($objArticle->title));
+        }
+
+        // overwrite the page description
+        if (!empty($objArticle->description)) {
+            // @see \Frontend::prepareMetaDescription
+            $objPage->description = strip_tags(strip_insert_tags($objArticle->description));
+        }
+
+        $objPage->title = strip_tags(strip_insert_tags($objArticle->headline));
+
+        // add the news keywords
+        if (!empty($objArticle->keywords)) {
+            $GLOBALS['TL_KEYWORDS'] = $objArticle->keywords;
+        }
+
+        return $strBuffer;
     }
 }

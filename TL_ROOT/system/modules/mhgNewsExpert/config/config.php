@@ -12,7 +12,14 @@
 /**
  * Hooks
  */
+$GLOBALS['TL_HOOKS']['getFrontendModule'][] = array('mhg\NewsExpert', 'getFrontendModule');
+$GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\NewsExpert', 'getContentElement');
 $GLOBALS['TL_HOOKS']['newsListFetchItems'][] = array('mhg\NewsExpert', 'newsListFetchItems');
+$GLOBALS['TL_HOOKS']['parseArticles'][] = array('mhg\NewsExpert', 'parseArticles');
+
+
+
+
 
 
 /**

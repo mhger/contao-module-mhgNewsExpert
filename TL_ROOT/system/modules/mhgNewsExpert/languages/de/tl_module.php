@@ -10,8 +10,7 @@
  * @license     LGPL-3.0+
  */
 $GLOBALS['TL_LANG']['tl_module']['redirects_legend'] = 'Weiterleitungen';
-$GLOBALS['TL_LANG']['tl_module']['redirect404'] = array('Weiterleitung: Fehlerhafte ID/Alias', 'Auf die interne Fehler 404 Seite weiterleiten, wenn eine ungültige ID bzw. Alias aufgerufen wurde.');
-$GLOBALS['TL_LANG']['tl_module']['redirectEmpty'] = array('Weiterleitung: Keine ID/Alias angegeben', 'Auf eine andere Seite weiterleiten, wenn keine ID bzw. Alias angegeben wurde.');
+$GLOBALS['TL_LANG']['tl_module']['redirectEmpty'] = array('Weiterleitung : Keine ID/Alias angegeben', 'Auf eine andere Seite weiterleiten, wenn keine ID bzw. Alias angegeben wurde.');
 $GLOBALS['TL_LANG']['tl_module']['newsSorting'] = array('Sortierreihenfolge', 'Legen Sie hier die Sortierreihenfolge der Nachrichtenn fest.');
 $GLOBALS['TL_LANG']['tl_module']['newsSortingOptions'] = array(
     'dateAsc' => 'Datum aufsteigend',

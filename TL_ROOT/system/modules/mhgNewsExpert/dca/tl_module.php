@@ -12,7 +12,7 @@
 /**
  * alter DCA pallettes and subpalettes
  */
-mhg\Dca::alterPalette('tl_module', ';{template_legend', ';{redirects_legend},redirect404,redirectEmpty;{template_legend', 'newsreader');
+mhg\Dca::alterPalette('tl_module', ',news_archives', ',news_archives,redirectEmpty', 'newsreader');
 mhg\Dca::alterPalette('tl_module', ',skipFirst', ',skipFirst,newsSorting', 'newslist');
 mhg\Dca::addSubpalette('tl_module', 'redirectEmpty', 'jumpTo');
 
@@ -24,6 +24,7 @@ mhg\Dca::addField('tl_module', 'redirect404', array(
     'exclude' => true,
     'filter' => true,
     'inputType' => 'checkbox',
+    'eval' => array('tl_class' => 'w50'),
     'sql' => "char(1) NOT NULL default ''"
 ));
 

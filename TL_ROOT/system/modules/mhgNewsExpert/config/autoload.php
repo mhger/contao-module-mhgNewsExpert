@@ -14,6 +14,5 @@
  */
 ClassLoader::addClasses(array(
     // Classes
-    'mhg\NewsExpert' => 'system/modules/mhgNewsExpert/classes/NewsExpert.php',
-    'mhg\ModuleNewsReader' => 'system/modules/mhgNewsExpert/modules/ModuleNewsReader.php',
+    'mhg\NewsExpert' => 'system/modules/mhgNewsExpert/classes/NewsExpert.php'
 ));
