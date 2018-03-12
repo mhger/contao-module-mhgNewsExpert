@@ -1,15 +1,15 @@
-# Contao Extension [mhgCore]
+# Contao Extension [mhgNewsExpert]
 
-Contao module with some basic adjustemts to the default behavior of Contao and adding some convenience functions.
+Contao module to add better handling of news.
 
 Idea and realisation: <https://www.medienhaus-gersoene.de>
 
 
 ## Features
-- auto publish pages on creation
-- removes unnecessary backend options (f.e. margins)
-- altered backend layouts, default values etc.
-- build in css compressor
+- adds meta title, description and keywords for news
+- sorting for news lists by date, title and random 
+- redirect for news reader if no ID/Alias is given
+- minor customization for news back end layout
 
 
 ### Manual
@@ -29,9 +29,9 @@ LGPL 3.0+
 
 
 ### Release
-2017-11-28
+2018-03-11
 
 
 ### Changelog
 
-2017-12-13 v1.0.1  Minor bugfix
+2018-03-11 v1.0.0  Inital release
