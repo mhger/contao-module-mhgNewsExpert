@@ -40,7 +40,7 @@ class NewsExpert {
             $arrOptions = array('order' => $GLOBALS['TL_MHG']['newsSorting'][$objModule->newsSorting]);
         } else {
             // use first sorting option if no valid sorting option is given
-            $arrTemp = $GLOBALS['TL_MHG']['newsSorting']['dateDesc'];
+            $arrTemp = $GLOBALS['TL_MHG']['newsSorting'];
             $arrOptions = array('order' => array_shift($arrTemp));
         }
 
